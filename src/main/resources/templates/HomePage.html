@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta  charset="UTF-8"/>
+    <title>主页面</title>
+    <link rel="stylesheet" th:href="@{/css/bootstrap.css}"/>
+</head>
+<body class="container">
+<br/>
+<h1>用户列表</h1>
+<br/><br/>
+<div class="with:80%">
+    <table class="table table-hover">
+    <thead>
+    <tr>
+        <th>Id</th>
+        <th>姓名</th>
+        <th>Email</th>
+        <th>删除</th>
+        <th>更新</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="s:${users}">
+        <td th:text="${s.id}">Id</td>
+        <td th:text="${s.name}">Name</td>
+        <td th:text="${s.email}">Email</td>
+        <td><a th:href="@{/del-admin/{id}(id=${s.id})}" class="btn btn-info" >Delete</a></td>
+        <td><a th:href="@{/update-admin/{id}(id=${s.id})}" class="btn btn-info" >Update</a></td>
+    </tr>
+    </tbody>
+</table>
+
+    <div class="modal-footer no-margin-top">
+        <ul class="pagination pull-right no-margin">
+            <li>
+                <a th:href="'/home-admin?pageNum=0'">首页</a>
+            </li>
+
+            <!-- 上一页 -->
+            <li th:if="${users.hasPrevious()}">
+                <a th:href="'/home-admin?pageNum=' + ${users.previousPageable().getPageNumber()}" th:text="上一页"></a>
+            </li>
+
+            <!-- 中间页 -->
+            <li th:each="pageNum:${#numbers.sequence(0, users.getTotalPages() - 1)}">
+                <a th:href="'/home-admin?pageNum=' + ${pageNum}" th:text="${pageNum + 1}" th:if="${pageNum ne users.pageable.getPageNumber()}"></a>
+                <a th:href="'/home-admin?pageNum=' + ${pageNum}" th:text="${pageNum + 1}" th:if="${pageNum eq users.pageable.getPageNumber()}" th:style="'font-weight:bold;background: #6faed9;'"></a>
+            </li>
+
+            <!-- 下一页 -->
+            <li th:if="${users.hasNext()}">
+                <a th:href="'/home-admin?pageNum=' + ${users.nextPageable().getPageNumber()}" th:text="下一页"></a>
+            </li>
+
+            <!-- 尾页 -->
+            <li>
+                <a th:href="'/home-admin?pageNum=' + ${users.getTotalPages() - 1}">尾页</a>
+            </li>
+
+        </ul>
+    </div>
+</div>
+
+
+    <div class="col-sm-2 control-label">
+        <a href="/new-admin" th:href="@{/new-admin}" class="btn btn-info">增加</a>
+    </div>
+<div class="col-sm-2 control-label">
+    <a href="/find-admin" th:href="@{/find}" class="btn btn-info">查找</a>
+</div>
+<a th:href="@{/}" class="btn btn-info" >回退</a>
+</body>
+</html>

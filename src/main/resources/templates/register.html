@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>注册</title>
+
+
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" th:href="@{/css/bootstrap.css}"/>
+    <link th:href ="@{~/css/signin.css}" rel="stylesheet">
+
+
+    <style>
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-admin-select: none;
+        -moz-admin-select: none;
+        -ms-admin-select: none;
+        admin-select: none;
+      }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+
+    </style>
+
+
+    <!-- Custom styles for this template -->
+    <link th:href="@{~/css/signin.css}" rel="stylesheet">
+
+</head>
+<body class="text-center">
+
+<form class="form-signin" th:action="@{/register-user}" th:object="${user}" method="POST">
+    <img class="mb-4" th:src="@{~/img/bootstrap-solid.svg}" alt="" width="72" height="72">
+    <h1 class="h3 mb-3 font-weight-normal">Please register</h1>
+    <label for="inputName" class="sr-only"></label>
+    <input type="text" th:field="*{userName}" name="username" id="inputName" class="form-control" placeholder="name" required autofocus>
+    <label for="inputPassword" class="sr-only"></label>
+    <input type="password" th:field="*{passWord}" name="password" id="inputPassword" class="form-control" placeholder="password" required autofocus>
+    <div class="checkbox mb-3">
+<!--        <label>-->
+<!--            <input type="checkbox" value="remember-me"> Remember me-->
+<!--        </label>-->
+    </div>
+    <button class="btn btn-lg btn-primary btn-block" type="submit">注册</button>
+    <a th:href="@{/}" class="btn btn-info col-2/">回退</a>
+    <p class="mt-5 mb-3 text-muted">&copy; 2017-2022</p>
+</form>
+
+
+</body>
+</html>

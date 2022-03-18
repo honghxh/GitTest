@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+  <title>查找页面</title>
+  <link rel="stylesheet" th:href="@{/css/bootstrap.css}">
+  <link rel="stylesheet" th:href ="@{/css/signin.css}"  type="text/css">
+</head>
+<body>
+<div class="container">
+  <h2>请输入要查找的数据</h2>
+  <form th:action="@{/find-admin}" method="GET">
+    <label for="inputId" class="sr-only"></label>
+    <input type="text" name="id" id="inputId" class="form-control" placeholder="id" required autofocus>
+    <button type="submit" class="btn btn-info">id查找</button>
+  </form>
+  <form th:action="@{/findByName}"  method="GET">
+    <label for="inputName" class="sr-only"></label>
+    <input type="text" name="name" id="inputName" class="form-control" placeholder="name" required autofocus>
+    <button type="submit" class="btn btn-info">名字查找</button>
+  </form>
+  <hr>
+  <a th:href="@{/home-admin}" class="btn btn-info" >回退</a>
+  <p style="color: red" th:text="${Msg}" th:if="${not #strings.isEmpty(Msg)}">
+</div>
+</body>
+</html>
