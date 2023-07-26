@@ -25,7 +25,11 @@ spring:
     testOnBorrow: false
     testOnReturn: false
     #配置监控统计拦截的filters，去掉后监控界面sql将无法统计,'wall'用于防火墙
-    filters: stat, wall, log4
+    filters: stat, wall, log4j
+  jpa:
+    hibernate:
+      ddl-auto: update   # 第一次建表用create,之后用update，
+    show-sql: true    # 在控制台打印出sql语句
 server:
   port: 8080
 
@@ -38,3 +42,4 @@ server:
     servlet:
       content-type: text/html
     suffix: .html
+#testttttttttttttttttttttttttt
