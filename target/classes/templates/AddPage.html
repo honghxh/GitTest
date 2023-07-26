@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <title>增加页面</title>
+    <link rel="stylesheet" th:href="@{/css/bootstrap.css}">
+    <link rel="stylesheet" th:href ="@{/css/signin.css}"  type="text/css">
+</head>
+<body>
+<div class="container">
+    <h2>请输入要增加的数据</h2>
+    <form th:action="@{/add-admin}" th:object="${userRecord}" method="POST">
+        <input type="text" th:field="*{name}" placeholder="name">
+        <input type="text" th:field="*{email}" placeholder="email">
+        <button type="submit" class="btn btn-info">保存</button>
+    </form>
+    <hr>
+    <a th:href="@{/home-admin}" class="btn btn-info" >回退</a>
+</div>
+</body>
+</html>

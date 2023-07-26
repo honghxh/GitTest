@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Hugo 0.88.1">
+    <title>login</title>
+    <link rel="stylesheet" th:href="@{/css/bootstrap.css}"/>
+    <link rel="stylesheet" th:href="@{/css/signin.css}" type="text/css">
+
+
+</head>
+<body class="text-center">
+<form class="form-signin">
+    <img class="mb-4" th:src="@{~/img/bootstrap-solid.svg}" alt="" width="72" height="72">
+    <h1 class="h3 mb-3 font-weight-normal">请选择</h1>
+
+    <a th:href="@{/loginU}" class="btn btn-lg btn-primary btn-block">用户登陆</a>
+
+    <a th:href="@{/loginA}" class="btn btn-lg btn-primary btn-block">管理员登陆</a>
+
+    <a th:href="@{/new}" class="btn btn-lg btn-primary btn-block">用户注册</a>
+
+    <p class="mt-5 mb-3 text-muted">&copy; 2017-2022</p>
+
+</form>
+
+
+
+
+
+</body>
+</html>
